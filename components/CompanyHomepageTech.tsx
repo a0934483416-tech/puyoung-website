@@ -164,9 +164,9 @@ export default function CompanyHomepageTech() {
           <p className="mt-2 max-ww-2xl text-neutral-300">可依需求選擇展示型官網、全端平台或產線監控方案。</p>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
-              { name: '展示型官網', price: 'NT$ 0 ~ 150/月', items: ['響應式設計','全球 CDN','自訂網域/SSL']},
-              { name: '全端平台', price: 'NT$ 150 ~ 600/月', items: ['Next.js + API','資料庫(MySQL/Postgres)','表單/登入/後台']},
-              { name: 'IoT 監控', price: '客製報價', items: ['MQTT + API','設備管理/歷史查詢','告警/報表/權限']},
+              { name: '4G版本智能監控設備', price: 'NT$ 400 ~ 500/月', items: ['APP使用 & PDF報表下載功能','雲端資料存取1年','數據傳輸費用']},
+              { name: '智能監控設備客製化', price: 'NT$ 20,000 ~ 40,000/次', items: ['感測器設計','主機板設計','雲端架接']},
+              { name: '客製化平台', price: '客製報價', items: ['MQTT + API','設備管理/歷史查詢','告警/報表/權限']},
             ].map(p => (
               <div key={p.name} className="flex flex-col rounded-3xl border border-white/10 bg-white/5 p-6">
                 <div className="text-xl font-semibold">{p.name}</div>
