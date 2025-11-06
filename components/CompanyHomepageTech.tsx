@@ -231,9 +231,9 @@ export default function CompanyHomepageTech() {
               <h2 className="text-2xl font-bold md:text-3xl">聯絡我們</h2>
               <p className="mt-2 max-w-lg text-neutral-300">留下您的需求，我們將在一個工作天內與您聯繫。</p>
               <div className="mt-6 space-y-3 text-neutral-300">
-                <div>📧 support@yourcompany.com</div>
-                <div>📞 +886-2-0000-0000</div>
-                <div>🏢 台北市 ◯◯ 區 ◯◯ 路 100 號 10F</div>
+                <div>📧 airetup0912@hotmail.com</div>
+                <div>📞 +886-0934483416</div>
+                <div>🏢 高雄市鳳山區北昌五街21號5樓</div>
               </div>
             </div>
             <form onSubmit={(e)=>e.preventDefault()} className="rounded-3xl border border-white/10 bg-white/5 p-6">
