@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import ContactForm from "@/components/ContactForm";
+import ContactForm from './ContactForm';
 
 export default function CompanyHomepageTech() {
   const [open, setOpen] = useState(false)
