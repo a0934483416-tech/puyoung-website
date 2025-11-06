@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import ContactForm from "@/components/ContactForm";
 
 export default function CompanyHomepageTech() {
   const [open, setOpen] = useState(false)
@@ -236,26 +237,7 @@ export default function CompanyHomepageTech() {
                 <div>🏢 高雄市鳳山區北昌五街21號5樓</div>
               </div>
             </div>
-            <form onSubmit={(e)=>e.preventDefault()} className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <label className="text-sm text-neutral-300">姓名</label>
-                  <input className="mt-1 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-neutral-500" placeholder="您的姓名" />
-                </div>
-                <div>
-                  <label className="text-sm text-neutral-300">Email</label>
-                  <input type="email" className="mt-1 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-neutral-500" placeholder="example@company.com" />
-                </div>
-              </div>
-              <div className="mt-4">
-                <label className="text-sm text-neutral-300">需求說明</label>
-                <textarea className="mt-1 h-28 w-full resize-none rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-neutral-500" placeholder="請簡述您的專案或需求…" />
-              </div>
-              <button className="mt-5 w-full rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 font-semibold hover:brightness-110">
-                送出需求
-              </button>
-              <p className="mt-3 text-center text-xs text-neutral-400">此為示意表單，可連接至您後端或外部表單服務</p>
-            </form>
+               <ContactForm />
           </div>
         </div>
       </section>
