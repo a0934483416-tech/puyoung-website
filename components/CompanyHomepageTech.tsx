@@ -69,14 +69,18 @@ export default function CompanyHomepageTech() {
       <section className="relative">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-20 pt-16 md:grid-cols-2 md:gap-16 md:pt-24">
           <div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl font-extrabold tracking-tight md:text-5xl"
-            >
-              以 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">AI / IoT</span> 驅動的企業級數位方案
-            </motion.h1>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
+                    <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                      AI / IoT
+                    </span>{" "}
+                    驅動的企業級數位方案
+                  </h1>
+                </motion.div>
             <p className="mt-4 max-w-xl text-neutral-300">
               低延遲、可擴展且安全的雲端架構，整合感測、儀控與資料分析，為您的產業升級提供動能。
             </p>
