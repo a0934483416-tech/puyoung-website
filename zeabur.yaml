@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      base: node
+      installCommand: npm install
+      buildCommand: npm run build
+      startCommand: npm run start
+    env:
+      NODE_ENV: production
+      PORT: 3000
