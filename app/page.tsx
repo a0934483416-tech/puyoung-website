@@ -1,8 +1,18 @@
-import dynamic from 'next/dynamic'
-
-const CompanyHomepageTech = dynamic(() => import('../components/CompanyHomepageTech'), { ssr: false })
+'use client';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import ContactForm from '../components/ContactForm';
 
 export default function Page() {
+   const [open, setOpen] = useState(false);
+
+  const navItems = [
+    { label: '產品方案', href: '#products' },
+    { label: '服務優勢', href: '#features' },
+    { label: '案例與客戶', href: '#customers' },
+    { label: '關於我們', href: '#about' },
+    { label: '聯絡我們', href: '#contact' },
+  ];
   return < <div className="min-h-screen bg-neutral-950 text-white selection:bg-cyan-500/30 selection:text-white">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-40 left-1/2 h-[600px] w-[1200px] -translate-x-1/2 rounded-full bg-cyan-500/20 blur-[120px]" />
