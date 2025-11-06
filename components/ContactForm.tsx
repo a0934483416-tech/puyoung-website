@@ -2,37 +2,29 @@
 import { useState } from 'react';
 
 export default function ContactForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
-  const [ok, setOk] = useState(false);
-  const [err, setErr] = useState<string | null>(null);
+  const [msg, setMsg] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    setOk(false);
-    setErr(null);
-
+    setMsg(null);
     try {
       const res = await fetch('/api/send-email', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(form),
       });
-
-      if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
-      if (data?.success) {
-        setOk(true);     // ← 顯示成功訊息
+      if (res.ok && data.success) {
+        setMsg('✅ 已送出，我們會盡快與您聯繫。');
+        setForm({ name: '', email: '', message: '' });
       } else {
-        throw new Error('Unexpected response');
+        setMsg('❌ 送出失敗，請稍後再試。');
       }
-    } catch (e: any) {
-      setErr('送出失敗，請稍後再試。');
-      console.error(e);
+    } catch {
+      setMsg('❌ 連線失敗，請稍後再試。');
     } finally {
       setLoading(false);
     }
@@ -44,10 +36,10 @@ export default function ContactForm() {
         <div>
           <label className="text-sm text-neutral-300">姓名</label>
           <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="mt-1 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-neutral-500"
+            className="mt-1 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2"
             placeholder="您的姓名"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
           />
         </div>
@@ -55,49 +47,31 @@ export default function ContactForm() {
           <label className="text-sm text-neutral-300">Email</label>
           <input
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-neutral-500"
+            className="mt-1 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2"
             placeholder="example@company.com"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
             required
           />
         </div>
       </div>
-
       <div className="mt-4">
         <label className="text-sm text-neutral-300">需求說明</label>
         <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="mt-1 h-28 w-full resize-none rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-neutral-500"
+          className="mt-1 h-28 w-full resize-none rounded-xl border border-white/10 bg-black/40 px-3 py-2"
           placeholder="請簡述您的專案或需求…"
+          value={form.message}
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
           required
         />
       </div>
-
       <button
-        type="submit"
         disabled={loading}
         className="mt-5 w-full rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 font-semibold hover:brightness-110 disabled:opacity-60"
       >
         {loading ? '送出中…' : '送出需求'}
       </button>
-
-      {/* 成功／錯誤訊息 */}
-      {ok && (
-        <p className="mt-3 text-center text-sm text-emerald-400">
-          ✅ 已送出，我們將盡快聯繫您！
-        </p>
-      )}
-      {err && (
-        <p className="mt-3 text-center text-sm text-red-400">
-          {err}
-        </p>
-      )}
-
-      <p className="mt-3 text-center text-xs text-neutral-400">
-        此為示意表單，已連接至您的後端寄信 API
-      </p>
+      {msg && <p className="mt-3 text-center text-xs text-neutral-300">{msg}</p>}
     </form>
   );
 }
