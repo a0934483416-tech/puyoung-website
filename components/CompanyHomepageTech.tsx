@@ -100,12 +100,11 @@ export default function CompanyHomepageTech() {
             </div>
           </div>
 
-                <motion.div
-                  className="relative"
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
 
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/50 p-6 shadow-2xl">
               <div className="mb-4 flex items-center gap-2">
