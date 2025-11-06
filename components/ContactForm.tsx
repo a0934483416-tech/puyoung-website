@@ -1,24 +1,45 @@
-'use client'
-import { useState } from "react";
+'use client';
+import { useState } from 'react';
 
 export default function ContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle"|"loading"|"success"|"error">("idle");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+  const [ok, setOk] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus("loading");
+    setLoading(true);
+    setOk(false);
+    setErr(null);
 
-    // ⛔ 尚未串接後端寄信，這裡暫時先做假成功
-    setTimeout(() => {
-      setStatus("success");
-    }, 1000);
-  };
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      if (data?.success) {
+        setOk(true);     // ← 顯示成功訊息
+      } else {
+        throw new Error('Unexpected response');
+      }
+    } catch (e: any) {
+      setErr('送出失敗，請稍後再試。');
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-3xl border border-white/10 bg-white/5 p-6">
+    <form onSubmit={onSubmit} className="rounded-3xl border border-white/10 bg-white/5 p-6">
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="text-sm text-neutral-300">姓名</label>
@@ -30,7 +51,6 @@ export default function ContactForm() {
             required
           />
         </div>
-
         <div>
           <label className="text-sm text-neutral-300">Email</label>
           <input
@@ -56,25 +76,27 @@ export default function ContactForm() {
       </div>
 
       <button
-        disabled={status === "loading"}
-        className="mt-5 w-full rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 font-semibold hover:brightness-110 disabled:opacity-50"
+        type="submit"
+        disabled={loading}
+        className="mt-5 w-full rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 font-semibold hover:brightness-110 disabled:opacity-60"
       >
-        {status === "loading" ? "送出中…" : "送出需求"}
+        {loading ? '送出中…' : '送出需求'}
       </button>
 
-      {status === "success" && (
-        <p className="mt-3 text-center text-sm text-green-400">
-          ✅ 已成功送出！我們將盡快與您聯繫。
+      {/* 成功／錯誤訊息 */}
+      {ok && (
+        <p className="mt-3 text-center text-sm text-emerald-400">
+          ✅ 已送出，我們將盡快聯繫您！
         </p>
       )}
-      {status === "error" && (
+      {err && (
         <p className="mt-3 text-center text-sm text-red-400">
-          ❌ 發生錯誤，請稍後再試。
+          {err}
         </p>
       )}
 
       <p className="mt-3 text-center text-xs text-neutral-400">
-        此為示意表單，可連接至後端寄信或外部服務
+        此為示意表單，已連接至您的後端寄信 API
       </p>
     </form>
   );
