@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image'
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from '../components/ContactForm';
@@ -25,7 +26,21 @@ export default function Page() {
       <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/60">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           <a href="#" className="flex items-center gap-3">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 font-bold">PU</div>
+            <a href="#" className="flex items-center gap-3">
+              <Image
+                src="/logo-puyoung.png"
+                alt="PUYOUNG SCIENCE"
+                width={36}
+                height={36}
+                className="h-9 w-9 rounded-xl object-contain"
+                priority
+              />
+              <div className="leading-tight">
+                <span className="block text-lg font-semibold tracking-wide">PUYOUNG SCIENCE</span>
+                <span className="block text-xs text-neutral-300">Innovate • Integrate • Inspire</span>
+              </div>
+            </a>
+            
             <div className="leading-tight">
               <span className="block text-lg font-semibold tracking-wide">PUYOUNG SCIENCE</span>
               <span className="block text-xs text-neutral-300">Innovate • Integrate • Inspire</span>
