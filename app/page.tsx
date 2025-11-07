@@ -30,8 +30,8 @@ export default function Page() {
                 <Image
                   src="/logo-puyoung.svg"
                   alt="PUYOUNG SCIENCE"
-                  width={220}
-                  height={160}
+                  width={120}
+                  height={80}
                   priority
                 />
               <div className="leading-tight">
