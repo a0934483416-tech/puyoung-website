@@ -248,8 +248,11 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <h3 className="text-lg font-semibold text-cyan-400 mb-1">普洋科技有限公司</h3>
-              <h2 className="text-2xl font-bold md:text-3xl">聯絡我們</h2>
+              <h3 className="text-4xl font-extrabold text-cyan-400 mb-1 tracking-wide drop-shadow-lg">
+                普洋科技有限公司
+              </h3>
+              <p className="text-lg text-neutral-300 mb-3">PUYOUNG SCIENCE Co., Ltd.</p>
+              <h2 className="text-2xl font-bold md:text-3xl text-white mt-1">聯絡我們</h2>
               <p className="mt-2 max-w-lg text-neutral-300">留下您的需求，我們將在一個工作天內與您聯繫。</p>
               <div className="mt-6 space-y-3 text-neutral-300">
                 <div>📧 airetup0912@hotmail.com</div>
