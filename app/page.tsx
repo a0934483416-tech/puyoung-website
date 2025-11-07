@@ -26,7 +26,7 @@ export default function Page() {
       <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/60">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           <a href="#" className="flex items-center gap-3">
-            <a href="#" className="flex items-center gap-3">
+           
                 <Image
                   src="/logo-puyoung.svg"
                   alt="PUYOUNG SCIENCE"
