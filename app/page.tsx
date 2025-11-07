@@ -27,14 +27,13 @@ export default function Page() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           <a href="#" className="flex items-center gap-3">
             <a href="#" className="flex items-center gap-3">
-              <Image
-                src="/logo-puyoung.png"
-                alt="PUYOUNG SCIENCE"
-                width={36}
-                height={36}
-                className="h-9 w-9 rounded-xl object-contain"
-                priority
-              />
+                <Image
+                  src="/logo-puyoung.svg"
+                  alt="PUYOUNG SCIENCE"
+                  width={220}
+                  height={160}
+                  priority
+                />
               <div className="leading-tight">
                 <span className="block text-lg font-semibold tracking-wide">PUYOUNG SCIENCE</span>
                 <span className="block text-xs text-neutral-300">Innovate • Integrate • Inspire</span>
