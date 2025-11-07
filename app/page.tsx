@@ -40,12 +40,6 @@ export default function Page() {
               </div>
             </a>
             
-            <div className="leading-tight">
-              <span className="block text-lg font-semibold tracking-wide">PUYOUNG SCIENCE</span>
-              <span className="block text-xs text-neutral-300">Innovate • Integrate • Inspire</span>
-            </div>
-          </a>
-
           <nav className="hidden items-center gap-6 md:flex">
             {navItems.map((n) => (
               <a key={n.label} href={n.href} className="text-sm text-neutral-300 transition hover:text-white">
